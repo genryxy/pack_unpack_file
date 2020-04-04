@@ -69,19 +69,49 @@ CMakeFiles/Krasnov_kdz_compression.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Krasnov_kdz_compression.dir/main.cpp.s"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\HSE\algorithms_data_structures\sem_2\Krasnov_kdz_compression\main.cpp -o CMakeFiles\Krasnov_kdz_compression.dir\main.cpp.s
 
+CMakeFiles/Krasnov_kdz_compression.dir/Huffman.cpp.obj: CMakeFiles/Krasnov_kdz_compression.dir/flags.make
+CMakeFiles/Krasnov_kdz_compression.dir/Huffman.cpp.obj: ../Huffman.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HSE\algorithms_data_structures\sem_2\Krasnov_kdz_compression\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Krasnov_kdz_compression.dir/Huffman.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Krasnov_kdz_compression.dir\Huffman.cpp.obj -c D:\HSE\algorithms_data_structures\sem_2\Krasnov_kdz_compression\Huffman.cpp
+
+CMakeFiles/Krasnov_kdz_compression.dir/Huffman.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Krasnov_kdz_compression.dir/Huffman.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\HSE\algorithms_data_structures\sem_2\Krasnov_kdz_compression\Huffman.cpp > CMakeFiles\Krasnov_kdz_compression.dir\Huffman.cpp.i
+
+CMakeFiles/Krasnov_kdz_compression.dir/Huffman.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Krasnov_kdz_compression.dir/Huffman.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\HSE\algorithms_data_structures\sem_2\Krasnov_kdz_compression\Huffman.cpp -o CMakeFiles\Krasnov_kdz_compression.dir\Huffman.cpp.s
+
+CMakeFiles/Krasnov_kdz_compression.dir/LZ77.cpp.obj: CMakeFiles/Krasnov_kdz_compression.dir/flags.make
+CMakeFiles/Krasnov_kdz_compression.dir/LZ77.cpp.obj: ../LZ77.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HSE\algorithms_data_structures\sem_2\Krasnov_kdz_compression\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Krasnov_kdz_compression.dir/LZ77.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Krasnov_kdz_compression.dir\LZ77.cpp.obj -c D:\HSE\algorithms_data_structures\sem_2\Krasnov_kdz_compression\LZ77.cpp
+
+CMakeFiles/Krasnov_kdz_compression.dir/LZ77.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Krasnov_kdz_compression.dir/LZ77.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\HSE\algorithms_data_structures\sem_2\Krasnov_kdz_compression\LZ77.cpp > CMakeFiles\Krasnov_kdz_compression.dir\LZ77.cpp.i
+
+CMakeFiles/Krasnov_kdz_compression.dir/LZ77.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Krasnov_kdz_compression.dir/LZ77.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\HSE\algorithms_data_structures\sem_2\Krasnov_kdz_compression\LZ77.cpp -o CMakeFiles\Krasnov_kdz_compression.dir\LZ77.cpp.s
+
 # Object files for target Krasnov_kdz_compression
 Krasnov_kdz_compression_OBJECTS = \
-"CMakeFiles/Krasnov_kdz_compression.dir/main.cpp.obj"
+"CMakeFiles/Krasnov_kdz_compression.dir/main.cpp.obj" \
+"CMakeFiles/Krasnov_kdz_compression.dir/Huffman.cpp.obj" \
+"CMakeFiles/Krasnov_kdz_compression.dir/LZ77.cpp.obj"
 
 # External object files for target Krasnov_kdz_compression
 Krasnov_kdz_compression_EXTERNAL_OBJECTS =
 
 Krasnov_kdz_compression.exe: CMakeFiles/Krasnov_kdz_compression.dir/main.cpp.obj
+Krasnov_kdz_compression.exe: CMakeFiles/Krasnov_kdz_compression.dir/Huffman.cpp.obj
+Krasnov_kdz_compression.exe: CMakeFiles/Krasnov_kdz_compression.dir/LZ77.cpp.obj
 Krasnov_kdz_compression.exe: CMakeFiles/Krasnov_kdz_compression.dir/build.make
 Krasnov_kdz_compression.exe: CMakeFiles/Krasnov_kdz_compression.dir/linklibs.rsp
 Krasnov_kdz_compression.exe: CMakeFiles/Krasnov_kdz_compression.dir/objects1.rsp
 Krasnov_kdz_compression.exe: CMakeFiles/Krasnov_kdz_compression.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\HSE\algorithms_data_structures\sem_2\Krasnov_kdz_compression\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Krasnov_kdz_compression.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\HSE\algorithms_data_structures\sem_2\Krasnov_kdz_compression\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Krasnov_kdz_compression.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Krasnov_kdz_compression.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

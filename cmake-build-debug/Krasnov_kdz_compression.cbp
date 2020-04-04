@@ -80,6 +80,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/Huffman.cpp">
+			<Option target="Krasnov_kdz_compression"/>
+		</Unit>
+		<Unit filename="D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/Huffman.h">
+			<Option target="Krasnov_kdz_compression"/>
+		</Unit>
+		<Unit filename="D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/LZ77.cpp">
+			<Option target="Krasnov_kdz_compression"/>
+		</Unit>
+		<Unit filename="D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/LZ77.h">
+			<Option target="Krasnov_kdz_compression"/>
+		</Unit>
 		<Unit filename="D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/main.cpp">
 			<Option target="Krasnov_kdz_compression"/>
 		</Unit>

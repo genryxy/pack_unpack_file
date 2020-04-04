@@ -6,7 +6,11 @@
 
 #IncludeRegexTransform: 
 
-D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/main.cpp
+D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/Huffman.cpp
+Huffman.h
+D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/Huffman.h
+
+D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/Huffman.h
 iostream
 -
 fstream
@@ -19,6 +23,34 @@ algorithm
 -
 cstring
 -
+
+D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/LZ77.cpp
+LZ77.h
+D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/LZ77.h
+
+D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/LZ77.h
+iostream
+-
+fstream
+-
+map
+-
+vector
+-
+algorithm
+-
+cstring
+-
+
+D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/main.cpp
+iostream
+-
+cstring
+-
 ctime
 -
+Huffman.h
+D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/Huffman.h
+LZ77.h
+D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/LZ77.h
 

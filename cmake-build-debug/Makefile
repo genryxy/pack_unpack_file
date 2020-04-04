@@ -122,6 +122,60 @@ Krasnov_kdz_compression/fast:
 	$(MAKE) -f CMakeFiles\Krasnov_kdz_compression.dir\build.make CMakeFiles/Krasnov_kdz_compression.dir/build
 .PHONY : Krasnov_kdz_compression/fast
 
+Huffman.obj: Huffman.cpp.obj
+
+.PHONY : Huffman.obj
+
+# target to build an object file
+Huffman.cpp.obj:
+	$(MAKE) -f CMakeFiles\Krasnov_kdz_compression.dir\build.make CMakeFiles/Krasnov_kdz_compression.dir/Huffman.cpp.obj
+.PHONY : Huffman.cpp.obj
+
+Huffman.i: Huffman.cpp.i
+
+.PHONY : Huffman.i
+
+# target to preprocess a source file
+Huffman.cpp.i:
+	$(MAKE) -f CMakeFiles\Krasnov_kdz_compression.dir\build.make CMakeFiles/Krasnov_kdz_compression.dir/Huffman.cpp.i
+.PHONY : Huffman.cpp.i
+
+Huffman.s: Huffman.cpp.s
+
+.PHONY : Huffman.s
+
+# target to generate assembly for a file
+Huffman.cpp.s:
+	$(MAKE) -f CMakeFiles\Krasnov_kdz_compression.dir\build.make CMakeFiles/Krasnov_kdz_compression.dir/Huffman.cpp.s
+.PHONY : Huffman.cpp.s
+
+LZ77.obj: LZ77.cpp.obj
+
+.PHONY : LZ77.obj
+
+# target to build an object file
+LZ77.cpp.obj:
+	$(MAKE) -f CMakeFiles\Krasnov_kdz_compression.dir\build.make CMakeFiles/Krasnov_kdz_compression.dir/LZ77.cpp.obj
+.PHONY : LZ77.cpp.obj
+
+LZ77.i: LZ77.cpp.i
+
+.PHONY : LZ77.i
+
+# target to preprocess a source file
+LZ77.cpp.i:
+	$(MAKE) -f CMakeFiles\Krasnov_kdz_compression.dir\build.make CMakeFiles/Krasnov_kdz_compression.dir/LZ77.cpp.i
+.PHONY : LZ77.cpp.i
+
+LZ77.s: LZ77.cpp.s
+
+.PHONY : LZ77.s
+
+# target to generate assembly for a file
+LZ77.cpp.s:
+	$(MAKE) -f CMakeFiles\Krasnov_kdz_compression.dir\build.make CMakeFiles/Krasnov_kdz_compression.dir/LZ77.cpp.s
+.PHONY : LZ77.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -158,6 +212,12 @@ help:
 	@echo ... Krasnov_kdz_compression
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... Huffman.obj
+	@echo ... Huffman.i
+	@echo ... Huffman.s
+	@echo ... LZ77.obj
+	@echo ... LZ77.i
+	@echo ... LZ77.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
