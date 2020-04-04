@@ -1,0 +1,3 @@
+D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/cmake-build-debug/CMakeFiles/Krasnov_kdz_compression.dir
+D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/HSE/algorithms_data_structures/sem_2/Krasnov_kdz_compression/cmake-build-debug/CMakeFiles/rebuild_cache.dir
