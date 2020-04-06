@@ -13,31 +13,105 @@
 // НЕ сделано: сжатие и распаковка методом LZW
 
 #include <iostream>
-#include <cstring>
 #include <ctime>
 #include "Huffman.h"
 #include "LZ77.h"
 
 using std::to_string;
+using std::replace;
+
+/**
+ * 
+ * @param name Путь до входного файла.
+ * @param fout_frequency Выходной .txt файл со значениями частот.
+ * @param fout_size Выходной .csv файл со значениями размеров файлов (исходных + сжатых).
+ */
+void writeFrequencyAndSizeOriginal(const string &name, ofstream &fout_frequency, ofstream &fout_size) {
+    // Открываем для чтения в бинарном режиме.
+    ifstream fin(name, std::ios::binary | std::ios::in);
+    uchar temp_char;
+    uint total = 0;
+
+    map<uchar, uint> frequency_table;
+    while (fin.read((char*) &temp_char, sizeof(temp_char))) {
+        frequency_table[temp_char]++;
+        total++;
+    }
+
+    for (int i = 0; i < 256; ++i) {
+        auto pos = frequency_table.find(i);
+        fout_frequency << /*i << ":" <<*/ (pos == frequency_table.end() ? 0 : pos->second) << "\n";
+    }
+    fout_frequency << "Total:" << total << "\n";
+    // Хотим получить значение в мегабайтах.
+    string tmp = to_string(total / 1024.0 / 1024);
+    replace(tmp.begin(), tmp.end(), '.', ',');
+    fout_size << name << ";" << tmp << "\n";
+
+    fin.close();
+}
+
+/**
+ * Вычисляем размер каждого сжатого файла. 
+ * @param name Путь до входного файла.
+ * @param Выходной .csv файл со значениями размеров файлов (исходных + сжатых).
+ */
+void writeSizeCompressed(const string &name, ofstream &fout_size) {
+    ifstream file(name, std::ios::binary | std::ios::in);
+    file.seekg(0, std::ios::end);
+    // Хотим получить значение в мегабайтах.
+    string tmp = to_string(file.tellg() / 1024.0 / 1024);
+    replace(tmp.begin(), tmp.end(), '.', ',');
+    fout_size << name << ";" << tmp << "\n";
+
+    file.close();
+}
 
 int main(int argc, char* argv[]) {
     const string path = "data/";
-    const int number_attempt = 1;
+    // Количество прогонов для каждого файла.
+    // Нужно сделать +1, т. к. считаем с 0.
+    const int number_attempt = 10;
 
     vector<string> file_names{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
-    vector<string> file_extension{".txt", ".docx", ".pptx", ".pdf", ".dll", ".jpg", ".jpg", ".bmp", ".bmp", ".csv"};
+    vector<string> file_extensions{".txt", ".docx", ".pptx", ".pdf", ".dll", ".jpg", ".jpg", ".bmp", ".bmp", ".csv"};
+    vector<string> compressed_extensions{".haff", ".lz775", ".lz7710", ".lz7720"};
+
     vector<int> dict_size{4 * 1024, 8 * 1024, 16 * 1024};
     vector<int> buffer_size{1 * 1024, 2 * 1024, 4 * 1024};
     Huffman huffman;
 
-    ofstream fout("time_result.txt");
+    // Вычисляем частоты для символов исходных файлов.
+    // Вычисляем размеры исходных файлов.
+    ofstream fout_frequency("info/frequency.txt");
+    ofstream fout_size("info/size.csv");
+    for (int i = 0; i < file_names.size(); ++i) {
+        const string name = path + file_names[i] + file_extensions[i];
+        writeFrequencyAndSizeOriginal(name, fout_frequency, fout_size);
+    }
+    fout_frequency.close();
+
+
+    // Вычисляем время работы алгоритмов на разных файлах.
+    for (auto extension:compressed_extensions) {
+        for (auto name:file_names) {
+            const string full_name = path + "compressed/" + name + extension;
+            writeSizeCompressed(full_name, fout_size);
+        }
+    }
+    fout_size.close();
+
+    // Вычисляем время работы каждого из алгоритмов на разных файлах.
+    // Сначала время упаковки для Хаффмана, потом время декодирования.
+    // Затем аналогично считаем для трёх модификаций алгоритма LZ77.
+    // количество прогонов для каждого файла - (number_attempt+1)
+    ofstream fout("info/time_result.txt");
     double first;
     double second;
-
     cout << "\n\t-----Begin compress Huffman-----\n";
     fout << "\t-----Compress Huffman-----\n";
     for (int j = 0; j < file_names.size(); ++j) {
-        string input = path + file_names[j] + file_extension[j];
+        string input = path + file_names[j] + file_extensions[j];
         string output = path + "compressed/" + file_names[j] + ".haff";
         fout << "\tFile: " << input << " Huffman\n";
         for (int i = 0; i < number_attempt; ++i) {
@@ -53,7 +127,7 @@ int main(int argc, char* argv[]) {
     fout << "\t-----Decompress Huffman-----\n";
     for (int j = 0; j < file_names.size(); ++j) {
         string input = path + "compressed/" + file_names[j] + ".haff";
-        string output = path + "decompressed/Huffman/" + file_names[j] + "_" + file_extension[j] + ".unhaff";
+        string output = path + "decompressed/Huffman/" + file_names[j] + "_" + file_extensions[j] + ".unhaff";
         fout << "\tFile: " << input << " Huffman\n";
         for (int i = 0; i < number_attempt; ++i) {
             first = double(clock());
@@ -70,7 +144,7 @@ int main(int argc, char* argv[]) {
         LZ77 lz77 = LZ77(dict_size[k], buffer_size[k]);
         int window_size = (dict_size[k] + buffer_size[k]) / 1024;
         for (int j = 0; j < file_names.size(); ++j) {
-            string input = path + file_names[j] + file_extension[j];
+            string input = path + file_names[j] + file_extensions[j];
             string output = path + "compressed/" + file_names[j] + ".lz77" + to_string(window_size);
             fout << "\tFile: " << input << " LZ77" << window_size << "\n";
             for (int i = 0; i < number_attempt; ++i) {
@@ -91,7 +165,7 @@ int main(int argc, char* argv[]) {
         for (int j = 0; j < file_names.size(); ++j) {
             string input = path + "compressed/" + file_names[j] + ".lz77" + to_string(window_size);
             string output = path + "decompressed/LZ77" + to_string(window_size) + "/" + file_names[j] + "_" +
-                            file_extension[j] + ".unlz77" + to_string(window_size);
+                            file_extensions[j] + ".unlz77" + to_string(window_size);
             fout << "\tFile: " << input << " LZ77\n";
             for (int i = 0; i < number_attempt; ++i) {
                 first = double(clock());
@@ -105,56 +179,5 @@ int main(int argc, char* argv[]) {
     fout << "\n\t-----End-----";
     fout.close();
 
-//    auto temp1 = double(clock());
-//    huffman.huffmanCompress(argv[3], argv[4]);
-//    auto temp2 = double(clock());
-//    huffman.huffmanDecompress(argv[4], "outBig.jpg");
-//    auto temp3 = double(clock());
-//    cout << "Time pack: " << (temp2 - temp1) / CLOCKS_PER_SEC << "sec\n";
-//    cout << "Time unpack: " << (temp3 - temp2) / CLOCKS_PER_SEC << "sec\n";
-//
-//    auto temp1 = double(clock());
-//    lz77.lz77Compress(argv[3], argv[4]);
-//    auto temp2 = double(clock());
-//    lz77.lz77Decompress(argv[4], "my_out.bmp");
-//    auto temp3 = double(clock());
-//    cout << "Time pack: " << (temp2 - temp1) / CLOCKS_PER_SEC << "sec\n";
-//    cout << "Time unpack: " << (temp3 - temp2) / CLOCKS_PER_SEC << "sec\n";
-
-//    if (argc < 5) {
-//        std::cout << "Usage: " << argv[0] << " [ALGO] [OPTION] [INPUT_FILE] [OUTPUT_FILE]" << std::endl;
-//        std::cout << "Algo:" << std::endl;
-//        std::cout << "  haff\tHuffman" << std::endl;
-//        std::cout << "  lz77\tLZ77" << std::endl;
-//        std::cout << "Options:" << std::endl;
-//        std::cout << "  -c\tCompress" << std::endl;
-//        std::cout << "  -d\tDecompress" << std::endl;
-//    } else {
-//        // Huffman
-//        if (!std::strcmp(argv[1], "haff") && !std::strcmp(argv[2], "-c")) {
-//            Huffman huffman;
-//            auto temp1 = double(clock());
-//            huffman.huffmanCompress(argv[3], argv[4]);
-//            auto temp2 = double(clock());
-//            huffman.huffmanDecompress(argv[4], "outBig.jpg");
-//            auto temp3 = double(clock());
-//            cout << "Time pack: " << (temp2 - temp1) / CLOCKS_PER_SEC << "sec\n";
-//            cout << "Time unpack: " << (temp3 - temp2) / CLOCKS_PER_SEC << "sec\n";
-//        }
-//        if (!std::strcmp(argv[1], "lz77") && !std::strcmp(argv[2], "-c")) {
-//            LZ77 lz77 = LZ77(4 * 1024, 1 * 1024);
-//            auto temp1 = double(clock());
-//            lz77.lz77Compress(argv[3], argv[4]);
-//            auto temp2 = double(clock());
-//            lz77.lz77Decompress(argv[4], "my_out.bmp");
-//            auto temp3 = double(clock());
-//            cout << "Time pack: " << (temp2 - temp1) / CLOCKS_PER_SEC << "sec\n";
-//            cout << "Time unpack: " << (temp3 - temp2) / CLOCKS_PER_SEC << "sec\n";
-//        }
-//        if (!std::strcmp(argv[1], "haff") && !std::strcmp(argv[2], "-d")) {
-//            Huffman huffman;
-//            huffman.huffmanDecompress(argv[3], argv[4]);
-//        }
-//    }
     return 0;
 }
