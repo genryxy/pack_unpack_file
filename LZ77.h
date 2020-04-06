@@ -36,19 +36,19 @@ private:
     vector<ushort> length_vec;
     vector<uchar> next_char;
     vector<uchar> input_chars;
-    int dictSize;
-    int bufferSize;
+    int dict_size;
+    int buffer_size;
 
 public:
 
     /**
-     * Конструктор класса. dictSize + bufferSize == скользящее окно.
-     * @param dictSize Размер словаря.
-     * @param bufferSize Размер буфера предпросмотра.
+     * Конструктор класса. dict_size + buffer_size == скользящее окно.
+     * @param dict_size Размер словаря.
+     * @param buffer_size Размер буфера предпросмотра.
      */
-    LZ77(int dictSize, int bufferSize) {
-        this->dictSize = dictSize;
-        this->bufferSize = bufferSize;
+    LZ77(int dict_size, int buffer_size) {
+        this->dict_size = dict_size;
+        this->buffer_size = buffer_size;
     }
 
     /**

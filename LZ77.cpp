@@ -7,25 +7,25 @@ pair<ushort, ushort> LZ77::getMatching(const vector<uchar> &dictionary, const ve
     ushort offset = 0;
     ushort length = 0;
 
-    int dictSize = dictionary.size();
-    int bufferSize = buffer.size();
+    int dict_size = dictionary.size();
+    int buffer_size = buffer.size();
 
     for (int i = 0; i < dictionary.size(); i++) {
-        int tmpLength = 0;
-        while (tmpLength < min(bufferSize, dictSize - i) && dictionary[i + tmpLength] == buffer[tmpLength]) {
-            tmpLength++;
+        int tmp_length = 0;
+        while (tmp_length < min(buffer_size, dict_size - i) && dictionary[i + tmp_length] == buffer[tmp_length]) {
+            tmp_length++;
         }
         // Возможно, что в буфере предпросмотра находится продолжение.
-        if (tmpLength == dictSize - i) {
+        if (tmp_length == dict_size - i) {
             int bufferIndex = 0;
-            while (tmpLength < bufferSize && buffer[bufferIndex] == buffer[tmpLength]) {
+            while (tmp_length < buffer_size && buffer[bufferIndex] == buffer[tmp_length]) {
                 bufferIndex++;
-                tmpLength++;
+                tmp_length++;
             }
         }
-        if (tmpLength > length) {
-            length = tmpLength;
-            offset = dictSize - i;
+        if (tmp_length > length) {
+            length = tmp_length;
+            offset = dict_size - i;
         }
     }
 
@@ -45,8 +45,8 @@ void LZ77::lz77Pack() {
     int pos = 0;
 
     while (pos < input_chars.size()) {
-        vector<uchar> dict = getSlice(input_chars, max(0, pos - dictSize), min(pos, dictSize));
-        vector<uchar> buffer = getSlice(input_chars, pos, min(bufferSize, (int) input_chars.size() - pos));
+        vector<uchar> dict = getSlice(input_chars, max(0, pos - dict_size), min(pos, dict_size));
+        vector<uchar> buffer = getSlice(input_chars, pos, min(buffer_size, (int) input_chars.size() - pos));
         if (buffer.empty()) {
             offset_vec.emplace_back(0);
             length_vec.emplace_back(0);
@@ -80,7 +80,6 @@ void LZ77::lz77Unpack(ofstream &fout) {
 }
 
 vector<uchar> LZ77::createVectorWithCharsLZ77(ifstream &fin, bool isCompressed) {
-    vector<uchar> input_chars;
     uchar temp_char;
     uint number_triples;
     ushort temp_ushort;
