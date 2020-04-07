@@ -10,7 +10,7 @@ pair<ushort, ushort> LZ77::getMatching(const vector<uchar> &dictionary, const ve
     int dict_size = dictionary.size();
     int buffer_size = buffer.size();
 
-    for (int i = 0; i < dictionary.size(); i++) {
+    for (int i = 0; i < dict_size; i++) {
         int tmp_length = 0;
         while (tmp_length < min(buffer_size, dict_size - i) && dictionary[i + tmp_length] == buffer[tmp_length]) {
             tmp_length++;
@@ -45,6 +45,7 @@ void LZ77::lz77Pack() {
     int pos = 0;
 
     while (pos < input_chars.size()) {
+        // Формируем словарь и буфер предпросмотра.
         vector<uchar> dict = getSlice(input_chars, max(0, pos - dict_size), min(pos, dict_size));
         vector<uchar> buffer = getSlice(input_chars, pos, min(buffer_size, (int) input_chars.size() - pos));
         if (buffer.empty()) {
@@ -52,9 +53,12 @@ void LZ77::lz77Pack() {
             length_vec.emplace_back(0);
             pos++;
         } else {
+            // Ищем совпадение последовательности символов из буфера предпросмотра
+            // с последовательностью из словаря (+ самого буфера в случае наложения).
             auto offsetLength = getMatching(dict, buffer);
             offset_vec.emplace_back(offsetLength.first);
             length_vec.emplace_back(offsetLength.second);
+            // Даже если ничего не совпало, то смещаемся вправо на один символ.
             pos += offsetLength.second + 1;
         }
         if (pos >= input_chars.size()) {
@@ -71,6 +75,7 @@ void LZ77::lz77Unpack(ofstream &fout) {
     for (int i = 0; i < offset_vec.size(); ++i) {
         auto start = res.length() - offset_vec[i];
         for (int j = 0; j < length_vec[i]; ++j) {
+            // Добавляем в строку уже имеющуюся в ней часть.
             res += res[start + j];
             fout.write((char*) &res[start + j], sizeof(next_char[0]));
         }
@@ -109,10 +114,11 @@ void LZ77::createCompressedLZ77File(ofstream &fout) {
     fout.write((char*) &number_triple, sizeof(number_triple));
 
     for (int i = 0; i < offset_vec.size(); ++i) {
-        // Записываем.
+        // Записываем позицию в словаре.
         fout.write((char*) &offset_vec[i], sizeof(offset_vec[0]));
-        // Записываем.
+        // Записываем длину фрагмента.
         fout.write((char*) &length_vec[i], sizeof(length_vec[0]));
+        // Записываем первый символ буфера предпросмотра после найденного фрагмента.
         fout.write((char*) &next_char[i], sizeof(next_char[0]));
     }
 }

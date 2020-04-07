@@ -1,0 +1,22 @@
+@startuml
+class LZ77 {
+- offset_vec : vector<ushort>
+- length_vec : vector<ushort>
+- next_char : vector<uchar>
+- input_chars : vector<uchar>
+- dict_size : int
+- buffer_size : int
+--
++ LZ77(int dict_size, int buffer_size)
++ lz77Compress(string input, string output) : void
++ lz77Decompress(string input, string output) : void
+--
+- {static} getSlice(const vector<uchar> &vec, int start, int end) : vector<uchar>
+- {static} getMatching(const vector<uchar> &dictionary, const vector<uchar> &buffer) : pair<ushort, ushort>
+- lz77Pack() : void
+- lz77Unpack(ofstream &fout) : void
+- createVectorWithCharsLZ77(ifstream &fin, bool isCompressed) : vector<uchar>
+- createCompressedLZ77File(ofstream &fout) : void
+- resetValues() : void
+}
+@enduml

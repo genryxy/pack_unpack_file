@@ -178,11 +178,11 @@ void Huffman::invertCompressedCharCodesIntoUsualSymbols(ifstream &fin, ofstream 
             temp_node = root;
             i++;
         }
-        // Получаем значение конкретного бита (в зависимости от смещения). Если digit == 0,
-        // то бит равен 0 => для декодирования идём в левую часть поддерева, иначе
-        // бит == 1 и тогда переходим в правую часть поддерева. Если дошли до  листа, то
-        // можем записать в файл значение  в этом листе и вернуться к корню дерева для
-        // декодирования оставшихся символов.
+        // Получаем значение конкретного бита (в зависимости от смещения). Если
+        // digit == 0, то бит равен 0 => для декодирования идём в левую часть
+        // поддерева, иначе бит == 1 и тогда переходим в правую часть поддерева.
+        // Если дошли до  листа, то можем записать в файл значение  в этом листе
+        // и вернуться к корню дерева для декодирования оставшихся символов.
         offset++;
         if (offset == 8) {
             offset = 0;
@@ -219,7 +219,8 @@ void Huffman::huffmanCompress(string input, string output) {
     deleteTree(tree);
     fin.close();
     fout.close();
-    // Print codes
+    // DEBUG!
+    // Печатаем коды вершин.
 //    for (auto i: codes) {
 //        cout << i.first << "-->";
 //        for (auto j: i.second) {
@@ -239,5 +240,8 @@ void Huffman::huffmanDecompress(string input, string output) {
     frequency_table = createFrequencyTable(fin, true);
     Node* tree = buildHuffmanTree();
     invertCompressedCharCodesIntoUsualSymbols(fin, fout, tree);
+
     deleteTree(tree);
+    fin.close();
+    fout.close();
 }

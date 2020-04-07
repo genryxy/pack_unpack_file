@@ -33,16 +33,15 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0e125e6-5059-445e-aea7-d57b71bc641b" name="Default Changelist" comment="Improved decomposition, added some comments">
+    <list default="true" id="d0e125e6-5059-445e-aea7-d57b71bc641b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Huffman.puml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LZ77.puml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Huffman.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Huffman.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Huffman.h" beforeDir="false" afterPath="$PROJECT_DIR$/Huffman.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Krasnov_kdz_compression.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Krasnov_kdz_compression.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Krasnov_kdz_compression.dir/Huffman.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Krasnov_kdz_compression.dir/Huffman.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Krasnov_kdz_compression.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Krasnov_kdz_compression.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Krasnov_kdz_compression.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Krasnov_kdz_compression.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Krasnov_kdz_compression.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Krasnov_kdz_compression.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/time_result.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LZ77.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/LZ77.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Krasnov_kdz_compression.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Krasnov_kdz_compression.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Krasnov_kdz_compression.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Krasnov_kdz_compression.dir/link.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -69,18 +68,30 @@
     <select />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="UML Sequence" />
+        <option value="UML Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/main.cpp" root0="SKIP_INSPECTION" />
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectId" id="1ZwuzP6MH4qaVKpDbPD0zNuA8O6" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="DefaultPlantUmlFileTemplate" value="UML Class" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../cont_7_pack_unpack" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -117,7 +128,9 @@
       <workItem from="1585989084431" duration="8723000" />
       <workItem from="1585999107216" duration="31631000" />
       <workItem from="1586072992759" duration="21224000" />
-      <workItem from="1586153498866" duration="10771000" />
+      <workItem from="1586153498866" duration="11539000" />
+      <workItem from="1586184993724" duration="2313000" />
+      <workItem from="1586190872908" duration="13851000" />
     </task>
     <task id="LOCAL-00001" summary="Improved decomposition, added some comments">
       <created>1586044161211</created>
@@ -126,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586044161211</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added counting size of files, counting frequencies of chars">
+      <created>1586184185110</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586184185110</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,6 +167,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Improved decomposition, added some comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved decomposition, added some comments" />
+    <MESSAGE value="Added counting size of files, counting frequencies of chars" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added counting size of files, counting frequencies of chars" />
   </component>
 </project>

@@ -1,0 +1,23 @@
+@startuml
+class Huffman {
+- num : uint
+- temp_code : vector<int>
+- frequency_table : map<uchar, uint>
+- codes : map<uchar, vector<int>>
+--
++ huffmanCompress(string input, string output) : void
++ huffmanDecompress(string input, string output) : void
+--
+- {static} getNewNode(uchar value, uint frequency, Node* left, Node* right) : Node*
+- {static} binarySearch(Node** arrNodes, int l, int r, uint nodeFreq) : int
+- {static} comparator(const pair<uchar, uint> &first, const pair<uchar, uint> &second) : bool
+- createFrequencyTable(ifstream &fin, bool isCompressed) : map<uchar, uint>
+- buildHuffmanTree() : Node*
+- createCharCodesFromTree(Node* root) : void
+- writeCompressedHuffmanText(ifstream &fin, ofstream &fout) : void
+- createCompressedHuffmanFile(ifstream &fin, ofstream &fout) : void
+- invertCompressedCharCodesIntoUsualSymbols(ifstream &fin, ofstream &fout, Node* root) : void
+- deleteTree(Node* root) :void
+- resetValues() : void
+}
+@enduml

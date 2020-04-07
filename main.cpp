@@ -92,7 +92,7 @@ int main(int argc, char* argv[]) {
     fout_frequency.close();
 
 
-    // Вычисляем время работы алгоритмов на разных файлах.
+    // Вычисляем размеры файлов.
     for (auto extension:compressed_extensions) {
         for (auto name:file_names) {
             const string full_name = path + "compressed/" + name + extension;
